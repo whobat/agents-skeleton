@@ -13,12 +13,13 @@
 #   2. README change only                          → 0
 #   3. src change WITH log.md update               → 0
 #   4. src change WITHOUT log.md                   → 1
-#   5. src *_test file change                      → 0  (excluded)
-#   6. src testdata/ change                        → 0  (excluded)
-#   7. api/ change WITHOUT log.md                  → 1
-#   8. docs/adr/ change WITHOUT log.md             → 1
-#   9. proto/ change WITHOUT log.md                → 1
-#  10. --range mode (CI use, no log.md)            → 1
+#   5. src *_test file change (Go convention)      → 0  (excluded)
+#   6. src test_*.py change (Python pytest)        → 0  (excluded)
+#   7. src testdata/ change                        → 0  (excluded)
+#   8. api/ change WITHOUT log.md                  → 1
+#   9. docs/adr/ change WITHOUT log.md             → 1
+#  10. proto/ change WITHOUT log.md                → 1
+#  11. --range mode (CI use, no log.md)            → 1
 #
 # Exit codes:
 #   0 — all cases passed
@@ -100,13 +101,19 @@ git add src/sample.go
 run_case "src change without log.md" 1
 reset_index
 
-# 5. _test file (excluded)
+# 5. _test file (Go convention — excluded)
 echo "package sample" > src/sample_test.go
 git add src/sample_test.go
-run_case "src _test file change" 0
+run_case "src _test file change (Go convention)" 0
 reset_index
 
-# 6. testdata (excluded)
+# 6. test_*.py (Python pytest convention — excluded)
+echo "def test_x(): pass" > src/test_sample.py
+git add src/test_sample.py
+run_case "src test_*.py change (Python pytest)" 0
+reset_index
+
+# 7. testdata (excluded)
 mkdir -p src/testdata
 echo "fixture" > src/testdata/foo.txt
 git add src/testdata/foo.txt

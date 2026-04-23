@@ -49,7 +49,10 @@ set -euo pipefail
 CONTRACT_SURFACE_REGEX='^(src/.+\.(go|ts|tsx|js|jsx|py|rb|rs|java|kt|swift|cs|php|scala|cpp|h|hpp|c)|api/.+|proto/.+|docs/adr/.+\.md)$'
 
 # Single regex of paths to exclude even if they match CONTRACT_SURFACE_REGEX.
-EXCLUDE_REGEX='(_test\.[^/]+$|\.test\.[^/]+$|\.spec\.[^/]+$|/testdata/|/__tests__/|/fixtures/|/mocks/)'
+# Test naming conventions covered: Go (foo_test.go), TS/JS (foo.test.ts,
+# foo.spec.ts), Python pytest (test_foo.py), and the various "tests live in
+# this folder" conventions (__tests__/, testdata/, fixtures/, mocks/).
+EXCLUDE_REGEX='(_test\.[^/]+$|\.test\.[^/]+$|\.spec\.[^/]+$|(^|/)test_[^/]+$|/testdata/|/__tests__/|/__pycache__/|/fixtures/|/mocks/)'
 
 # The required co-change file. Don't edit unless you also rename the file.
 LOG_PATH='docs/wiki/log.md'
