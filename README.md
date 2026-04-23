@@ -4,12 +4,32 @@ A starter kit for new projects that follow the [`AGENTS.md`](https://agents.md) 
 
 It bakes in the disciplines I keep coming back to: a **codebase wiki** for module-level invariants, **per-folder breadcrumbs** so an agent landing anywhere finds its way, **strict TDD** as the default workflow, and a **mechanically enforced** rule that wiki maintenance can't drift from the code.
 
+This is a **public template repository** at <https://github.com/whobat/agents-skeleton>. No credentials needed to clone or use it.
+
 ## Use it
 
-```bash
-gh repo create my-new-project --template <YOUR_GH_USER>/agents-skeleton --private --clone
-cd my-new-project
+Three ways, pick whichever fits your flow:
 
+### 1. GitHub web UI (easiest)
+Click **"Use this template"** at the top of [the repo page](https://github.com/whobat/agents-skeleton), name your new project, choose visibility, done. GitHub clones the structure into a fresh repo with no shared history.
+
+### 2. GitHub CLI
+```bash
+gh repo create my-new-project --template whobat/agents-skeleton --private --clone
+cd my-new-project
+```
+
+### 3. Plain `git clone` (no GitHub account needed)
+Since this repo is public, anyone can grab a copy without authentication and start a fresh history:
+```bash
+git clone https://github.com/whobat/agents-skeleton.git my-new-project
+cd my-new-project
+rm -rf .git && git init -b main
+```
+
+### Then in the new project
+
+```bash
 # One-time
 pre-commit install
 
