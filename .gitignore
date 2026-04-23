@@ -1,0 +1,43 @@
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-*
+
+# Build output / coverage — placeholders, expand per language
+dist/
+build/
+out/
+coverage/
+coverage.out
+coverage.xml
+*.lcov
+.nyc_output/
+
+# Dependency caches — expand per language
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.cache/
+
+# Env files (committed examples allowed; real ones never)
+.env
+.env.local
+.env.*.local
+
+# Pre-commit
+.pre-commit-cache/

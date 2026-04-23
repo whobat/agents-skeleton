@@ -1,0 +1,30 @@
+# <type>(<scope>): <summary>                        # max 72 chars
+#
+# <body — wrap at 72, explain WHY, not WHAT>
+#
+# <footer — e.g. "Closes #123", "BREAKING CHANGE: ...">
+#
+# --- Conventional Commits cheat sheet ---
+# type:
+#   feat      new feature
+#   fix       bug fix
+#   chore     tooling / maintenance
+#   docs      documentation only
+#   refactor  code change that neither fixes nor adds
+#   test      adding or updating tests
+#   perf      performance improvement
+#   build     build system / deps
+#   ci        CI / workflow
+#
+# scope:       optional — the module or area touched (e.g. auth, wiki, ci)
+# summary:     imperative, lowercase, no trailing period
+# body:        prose; reference the WHY
+# footer:      BREAKING CHANGE: ... or issue refs
+#
+# Wire this template once:  git config commit.template .gitmessage
+#
+# Wiki reminder:
+# If this change touches a contract (port signature, invariant, security rule),
+# also update the relevant docs/wiki/*.md AND add an entry to docs/wiki/log.md.
+# The pre-commit hook will block the commit if you forget — that's the signal
+# to pause and check whether a wiki update is genuinely needed.

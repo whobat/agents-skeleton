@@ -1,0 +1,42 @@
+# Pre-commit hooks. Install once per clone with:  pre-commit install
+# Run manually with:                              pre-commit run --all-files
+#
+# Hooks here are stack-agnostic. Add language-specific hooks (gofmt, eslint,
+# ruff, rubocop, prettier, ...) when you adopt a stack.
+
+minimum_pre_commit_version: "3.5.0"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+      - id: check-merge-conflict
+      - id: check-case-conflict
+
+  - repo: local
+    hooks:
+      # Fail fast if a private-key PEM block is committed. Self-test in CI
+      # ensures the guard itself can't silently regress.
+      - id: check-no-secrets
+        name: no leaked private keys
+        description: Reject commits that include private-key PEM blocks
+        entry: bash scripts/check-no-secrets.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # When a contract-surface file changes, docs/wiki/log.md must change in
+      # the same commit. See AGENTS.md "Wiki maintenance" for the rule.
+      # Customise the trigger paths near the top of the script.
+      - id: check-wiki-log
+        name: wiki/log consistency
+        description: Contract-surface changes must be logged in docs/wiki/log.md
+        entry: bash scripts/check-wiki-log.sh
+        language: system
+        pass_filenames: false
+        always_run: true

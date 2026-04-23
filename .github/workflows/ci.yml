@@ -1,0 +1,68 @@
+name: CI
+
+# Default skeleton workflow. The `guards` job is fully wired and runs the
+# stack-agnostic checks. The `build` and `test` jobs are placeholders — fill
+# them in when you adopt a language stack.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  guards:
+    name: Guards (secrets + wiki/log)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for leaked private keys
+        run: |
+          bash scripts/check-no-secrets.sh
+          bash scripts/check-no-secrets_test.sh
+
+      # Wiki/log consistency: a PR that changes contract surface must also
+      # update docs/wiki/log.md. The pre-commit hook is the primary
+      # enforcement; this CI step is the back-stop for --no-verify bypasses
+      # and ensures the guard itself can't silently regress (the self-test
+      # always runs).
+      - name: Wiki/log consistency
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git fetch --no-tags --depth=1 origin "${{ github.event.pull_request.base.sha }}"
+            bash scripts/check-wiki-log.sh --range "${{ github.event.pull_request.base.sha }}..HEAD"
+          fi
+          bash scripts/check-wiki-log_test.sh
+
+  # ---------------------------------------------------------------------------
+  # Placeholder jobs. Replace with your stack-specific build / lint / test.
+  # ---------------------------------------------------------------------------
+
+  build:
+    name: Build (placeholder)
+    runs-on: ubuntu-latest
+    needs: guards
+    steps:
+      - uses: actions/checkout@v4
+      - name: TODO
+        run: |
+          echo "Replace this job with your stack's build step."
+          echo "Examples:"
+          echo "  Go:     go build ./..."
+          echo "  Node:   pnpm install --frozen-lockfile && pnpm build"
+          echo "  Python: uv sync && uv run python -m build"
+          echo "  Rust:   cargo build --workspace"
+
+  test:
+    name: Test (placeholder)
+    runs-on: ubuntu-latest
+    needs: guards
+    steps:
+      - uses: actions/checkout@v4
+      - name: TODO
+        run: |
+          echo "Replace this job with your stack's test step."
+          echo "Remember the strict TDD discipline — tests should be green here on every PR."
