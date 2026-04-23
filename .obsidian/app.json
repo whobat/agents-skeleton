@@ -1,0 +1,12 @@
+{
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "attachmentFolderPath": "docs/wiki/assets",
+  "alwaysUpdateLinks": true,
+  "showLineNumber": true,
+  "spellcheck": false,
+  "showFrontmatter": true,
+  "promptDelete": true,
+  "trashOption": "system",
+  "alwaysShowMobileToolbar": false
+}

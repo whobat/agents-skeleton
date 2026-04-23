@@ -9,6 +9,7 @@ The wiki is plain markdown. Any tool that respects the [`AGENTS.md`](https://age
 > Replace this placeholder list as you add real module pages.
 
 - [example-module.md](example-module.md) — page-shape template (delete or rename when you have your first real module)
+- [obsidian-setup.md](obsidian-setup.md) — Obsidian vault config: plugins, theme, what to commit, what's pinned and why
 
 ## How to maintain this wiki
 

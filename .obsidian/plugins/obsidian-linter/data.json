@@ -1,0 +1,32 @@
+{
+  "ruleConfigs": {
+    "trailing-spaces": {
+      "enabled": true,
+      "two-space-line-break": false
+    },
+    "consecutive-blank-lines": {
+      "enabled": true
+    },
+    "headings-start-line": {
+      "enabled": true
+    },
+    "convert-bullet-list-markers": {
+      "enabled": true
+    },
+    "no-bare-urls": {
+      "enabled": false
+    }
+  },
+  "lintOnSave": true,
+  "displayChanged": false,
+  "settingsConvertedToConfigKeyValues": true,
+  "foldersToIgnore": [],
+  "filesToIgnore": [
+    {
+      "label": "Wiki change log (append-only — auto-format would corrupt history)",
+      "match": "docs/wiki/log\\.md$",
+      "matchType": "regex"
+    }
+  ],
+  "linterLocale": "system-default"
+}

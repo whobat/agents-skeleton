@@ -1,0 +1,11 @@
+{
+  "folderNoteName": "{{folder_name}}",
+  "ctrlKey": false,
+  "altKey": false,
+  "hideFolderNote": false,
+  "underlineFolder": true,
+  "allowWhitespaceCollapsing": false,
+  "disableFolderClickOpen": false,
+  "openByCtrlClick": false,
+  "templatePath": ""
+}

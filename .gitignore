@@ -41,3 +41,20 @@ venv/
 
 # Pre-commit
 .pre-commit-cache/
+
+# Obsidian — vault config is committed; personal state is ignored.
+# See docs/wiki/obsidian-setup.md for what's pinned and why.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+.obsidian/cache
+.obsidian/cache/**
+.obsidian/themes/PLN/
+
+# Plugin runtime state we don't want to ship — add explicit allowlist below
+# when you actually want a plugin's config tracked.
+# (Linter, Templater, Folder Notes are explicitly committed via git add.)
+.obsidian/plugins/*/.gitignore
+.obsidian/plugins/*/manifest.json
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css

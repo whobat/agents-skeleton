@@ -71,6 +71,17 @@ pre-commit install
 - **CI.** `.github/workflows/ci.yml` has placeholders for `build`, `lint`, `test` jobs. The `guards` job (the secrets + wiki/log self-tests) is fully wired — add your stack-specific steps to the placeholders.
 - **Pre-commit.** `.pre-commit-config.yaml` has hygiene hooks + the two guards. Add language-specific hooks (gofmt, eslint, ruff, ...) when you adopt the stack.
 
+## Reading the wiki in Obsidian
+
+The repo ships a curated `.obsidian/` vault config (theme, plugins, link format) so the wiki opens cleanly in Obsidian out of the box. Open the folder as a vault, accept the community-plugin trust prompt, and you get:
+
+- **Linter** with auto-format on save, configured to skip `docs/wiki/log.md` so the append-only history is preserved.
+- **Templater** with a `new-module` template wired to fire when you create a file under `docs/wiki/`.
+- **Folder Notes** so clicking a folder opens its README.
+- Standard markdown links (`[text](path)`) — **not** `[[wikilinks]]` — to keep the wiki readable by every other AI tool.
+
+Full details: [`docs/wiki/obsidian-setup.md`](docs/wiki/obsidian-setup.md).
+
 ## Optional but recommended next steps
 
 - Add an ADR before the first architectural decision lands. `docs/adr/ADR-template.md` is your starting point.

@@ -1,0 +1,7 @@
+# Drop your PLN theme directory here:
+#   .obsidian/themes/PLN/theme.css
+#   .obsidian/themes/PLN/manifest.json
+#
+# If the directory is missing, Obsidian falls back to the default theme on
+# first open and prompts you to install one. The PLN theme reference lives
+# in .obsidian/appearance.json (cssTheme: "PLN").
