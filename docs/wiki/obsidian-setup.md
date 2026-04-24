@@ -1,13 +1,13 @@
 # Obsidian setup for this wiki
 
-This codebase ships an `.obsidian/` configuration so the wiki opens cleanly in Obsidian out of the box. The config is committed; personal state (window layout, graph view position) is gitignored.
+This skeleton ships an `.obsidian/` configuration so the wiki opens cleanly in Obsidian out of the box. The config is committed; personal state (window layout, graph view position) is gitignored. The PLN theme itself is **not** bundled — it's private per-vault and you drop it in yourself on first open.
 
 ## First-time open
 
 1. **File → Open vault → this folder.**
 2. Obsidian detects community plugins it doesn't trust yet — click **"Trust author and enable plugins"**.
 3. Three plugins auto-install: **Linter**, **Templater**, **Folder Notes**.
-4. **PLN theme**: if you have it on this machine, Obsidian uses it. If not, copy your existing `<vault>/.obsidian/themes/PLN/` into this repo's `.obsidian/themes/`, OR install via Settings → Appearance → Manage → Browse. Without PLN, Obsidian falls back to default — nothing breaks.
+4. **PLN theme**: `appearance.json` asks for it, but the CSS isn't in the repo. Either copy your existing `<vault>/.obsidian/themes/PLN/` folder into this repo's `.obsidian/themes/PLN/`, OR install another theme via Settings → Appearance → Manage → Browse. Without PLN, Obsidian falls back to default — nothing breaks.
 
 ## What's pinned and why
 
@@ -27,7 +27,7 @@ This codebase ships an `.obsidian/` configuration so the wiki opens cleanly in O
 ### Community
 | Plugin | Purpose |
 |--------|---------|
-| **Linter** | Auto-format on save (trailing whitespace, blank-line collapse, headings). **Configured to skip `docs/wiki/log.md`** so the append-only history never gets reorganised |
+| **Linter** | Auto-format on save (trailing whitespace, blank-line collapse, headings). **Configured to skip [`docs/wiki/log.md`](log.md)** so the append-only history never gets reorganised |
 | **Templater** | `Cmd/Ctrl-P → "Templater: Insert template" → new-module` to start a wiki page with the right shape pre-filled. Also fires automatically when you create a file directly under `docs/wiki/` |
 | **Folder Notes** | Click `docs/wiki/` in the file tree → opens README.md |
 
@@ -44,8 +44,8 @@ This codebase ships an `.obsidian/` configuration so the wiki opens cleanly in O
 
 ## Things you must NOT change
 
-- **Standard markdown links.** Switching `useMarkdownLinks` to `false` (= `[[wikilinks]]`) breaks AI tool compatibility.
-- **The Linter exclude for `log.md`.** The append-only contract beats auto-format ergonomics. If the linter rewrites the log, the change-history reading order is destroyed.
+- **Standard markdown links.** Switching `useMarkdownLinks` to `false` (= `[[wikilinks]]`) breaks AI tool compatibility — Codex CLI, OpenCode, Aider, Cursor all parse standard markdown only.
+- **The Linter exclude for `log.md`.** The append-only contract beats auto-format ergonomics. If the linter rewrites the log, the change-history reading order is destroyed and the [`scripts/check-wiki-log.sh`](../../scripts/check-wiki-log.sh) guard's signal disappears.
 
 ## What's gitignored
 
@@ -55,7 +55,7 @@ Personal state, never committed:
 .obsidian/workspace-mobile.json
 .obsidian/graph.json
 .obsidian/cache
-.obsidian/themes/PLN/                  # if locally present, kept private
+.obsidian/themes/PLN/        # kept local and private; copy in on first open
 ```
 
 Everything else under `.obsidian/` is curated config and committed — share-and-share-alike.
@@ -71,3 +71,4 @@ Everything else under `.obsidian/` is curated config and committed — share-and
 - [README.md](README.md) — wiki index
 - [AGENTS.md](AGENTS.md) — wiki maintenance contract (the rules the Linter must not break)
 - Root [`AGENTS.md`](../../AGENTS.md) — TDD + wiki maintenance rules
+- Root [`README.md`](../../README.md) — skeleton overview
