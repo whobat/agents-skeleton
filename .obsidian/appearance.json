@@ -1,13 +1,12 @@
 {
-  "theme": "obsidian",
-  "cssTheme": "PLN",
-  "baseFontSize": 16,
-  "enabledCssSnippets": [],
+  "textFontFamily": "Inter",
+  "interfaceFontFamily": "Inter",
+  "monospaceFontFamily": "JetBrains Mono",
+  "theme": "system",
+  "nativeMenus": true,
   "translucency": false,
-  "nativeMenus": false,
-  "showInlineTitle": true,
+  "accentColor": "#7c5cbf",
+  "baseFontSize": 16,
   "showViewHeader": true,
-  "interfaceFontFamily": "",
-  "textFontFamily": "",
-  "monospaceFontFamily": ""
+  "cssTheme": "PLN"
 }

@@ -1,11 +1,30 @@
 {
-  "folderNoteName": "{{folder_name}}",
-  "ctrlKey": false,
-  "altKey": false,
-  "hideFolderNote": false,
-  "underlineFolder": true,
-  "allowWhitespaceCollapsing": false,
-  "disableFolderClickOpen": false,
-  "openByCtrlClick": false,
-  "templatePath": ""
+  "fileTemplate": {
+    "enabled": false,
+    "folderNoteType": "same_name"
+  },
+  "folderNote": {
+    "folderNoteType": "same_name",
+    "enableFolderNote": true,
+    "autoFold": true,
+    "syncDelete": true,
+    "openFolderNoteAfterRenaming": true,
+    "openFolderNoteAfterMoving": true,
+    "excludeFolders": [
+      ".obsidian"
+    ],
+    "folderNoteName": "README",
+    "hideFolderNote": true,
+    "disableFolderClick": false,
+    "disableFolderHover": false,
+    "autoPreview": true,
+    "autoPreviewMode": "source",
+    "convertOnOpen": true
+  },
+  "openByClick": true,
+  "openWithHover": false,
+  "openWithMedia": false,
+  "syncFileExplorer": true,
+  "collapseAllIgnore": false,
+  "enableCollapsing": true
 }
